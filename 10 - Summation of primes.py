@@ -1,3 +1,10 @@
+# - Problem 10
+# - Summation of primes
+# 
+# The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+# 
+# Find the sum of all the primes below two million.
+
 n = 2000000
 
 ## Creating array where prime is 1
@@ -12,9 +19,6 @@ for i in range(3, int(n**0.5)+1, 2):
             isPrime [j] = 0
 
 ## Creating Sum
-s = 0
-for i in range(n):
-    if isPrime[i]:
-        s += i
+s = sum([i for i in range(n) if isPrime[i]])
 
 print(s)
