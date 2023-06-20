@@ -1,3 +1,8 @@
+# - Problem 17
+# - Number Letter Counts
+# 
+# If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
+
 unit = [3,3,5,4,4,3,5,5,4]
 tunit = [3,6,6,8,8,7,7,9,8,8]
 ten = [6,6,5,5,5,7,6,6]
@@ -9,9 +14,7 @@ t = sum(unit)
 s = sum(tunit)
         
 # 20-99
-r = 0 
-for n in ten:
-    r += n*10 + t
+r = sum(n*10 + t for n in ten) 
     
 # 1-99
 h = t + r + s

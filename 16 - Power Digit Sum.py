@@ -1,7 +1,10 @@
-n = 1000
+# - Problem 16
+# - Power Digit Sum
+# 
+# What is the sum of the digits of the number 2^1000?
 
-k = 2**n
-s = 0
-for i in list(str(k)):
-	s += int(i)
+n = 1000
+k = list(str(2**n))
+s = sum(int(i) for i in k)
+
 print(s)

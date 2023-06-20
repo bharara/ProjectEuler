@@ -1,3 +1,8 @@
+# - Problem 20
+# - Factorial Digit Sum
+# 
+# Find the sum of the digits in the number 100!.
+
 def factorial(n):
     if n == 2:
         return 2
@@ -5,8 +10,6 @@ def factorial(n):
 
 
 n = 100
-s = 0
-for i in list(str(factorial(n))):
-    s += int(i)
-
+fact = list(str(factorial(n)))
+s = sum(int(i) for i in fact)
 print(s)
