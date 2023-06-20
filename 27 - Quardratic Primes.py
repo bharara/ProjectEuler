@@ -1,3 +1,11 @@
+# - Problem 27
+# - Quadratic Primes
+# 
+# Euler discovered the remarkable quadratic formula: n2 + n + 41
+# It turns out that the formula will produce 40 primes for the consecutive integer values 0 to 39
+# Considering quadratics of the form: n2 + an + b where -1000 < a,b < 1000 
+# Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n=0.
+
 n = 1000000
 
 ## Creating array where prime is 1
@@ -19,8 +27,7 @@ def form(a,b):
     return n
 
 
-large=0
-
+large = 0
 for a in range(-999, 1000):
   for b in range(-1000, 1001):
     j = form (a,b) 
@@ -29,4 +36,4 @@ for a in range(-999, 1000):
       y = b
       large = j
 
-print(x*y)
+print(x*y, x, y, large)
