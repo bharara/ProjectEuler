@@ -1,29 +1,29 @@
-def isPan (i):
-
-    for c in range(1, halfN):
-        if int(i[:c]) * int(i[c:halfN]) ==  int(i[halfN:]):
-            return int(i[halfN:])
+# - Problem 32
+# - Pandigital Products
+# 
+# We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once
+# Find the sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital.
 
 
 import itertools
+import math
 
 n = 9
-if n%2:
-    halfN = n//2 + 1
-else:
-    halfN = n//2
+halfN = int(math.ceil(n/2))
 
-s = "".join([str(x+1) for x in range(n)])
 
-p = list(itertools.permutations(s))
-a = []
+def isProduct(i, j, k):
+    return int("".join(i)) * int("".join(j)) == int("".join(k))
 
-for i in p:
-    x = isPan("".join(j for j in i))
-    if x:
-        #print(i, x)
-        if x not in a:
-            a.append(x)
 
-#print(a)
-print(sum(a))
+s = list(str(x+1) for x in range(n))
+perms = list(itertools.permutations(s))
+
+products = set()
+for perm in perms:
+    for c in range(1, halfN):
+        if isProduct(perm[:c] , perm[c:halfN], perm[halfN:]):
+            products.add(int("".join( perm[halfN:])))
+        
+
+print (sum(products))

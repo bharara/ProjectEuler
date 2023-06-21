@@ -1,3 +1,8 @@
+# - Problem 41
+# - Pandigital Prime
+# 
+# What is the largest n-digit pandigital prime that exists?
+
 from math import sqrt
 from itertools import permutations
 
@@ -11,8 +16,8 @@ def isPrime (x):
 
 	return True
 
-
-for i in range (2,10):
+val = 0
+for i in range (9,1,-1):
 	s = "".join([str(x+1) for x in range(i)])
 	p = list(permutations(s))
 
@@ -21,4 +26,7 @@ for i in range (2,10):
 		if isPrime(k):
 			val = k
 
-print(k)
+	if val != 0: ## If a value if found, it must be largest, break
+		break
+
+print(val)

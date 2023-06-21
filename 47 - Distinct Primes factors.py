@@ -1,38 +1,30 @@
-def prfac(n):
-    a=2
-    c=1
-    lst=[]
+# - Problem 47
+# - Distinct Primes Factors
+# 
+# Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?
+
+def numberOfDistintPrimeFactor(n):
+    a = 2
+    factors = set()
     while a*a<n:
         if n%a==0:
             n//=a
-            if a not in lst:
-                lst.append(a)
-                c+=1
-                continue
+            factors.add(a)
         else:
             a+=1
-    return c
+    return len(factors) + 1
 
 
-def check (i):
-
-    for j in range (n):
-        if prfac (i + j) != n:
+def check (i, n):
+    for j in range (i, i+n):
+        if numberOfDistintPrimeFactor (j) != n:
             return False
     return True
-
-# n=1
-# while True:
-#     if prfac(n)==4 and prfac(n+1)==4 and prfac(n+2)==4 and prfac(n+3)==4:
-#         print(n,n+1,n+2,n+3)
-#         break
-#     n+=1
 
 n = 4
 
 i = 1
-while True:
-    if check (i):
-        print(i)
-        break
+while not check (i, n):
     i += 1
+
+print (i)

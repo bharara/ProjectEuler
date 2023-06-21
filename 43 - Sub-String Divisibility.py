@@ -1,23 +1,20 @@
+# - Problem 43
+# - Sub-string Divisibility
+
 from itertools import permutations
 
 s = [str(i) for i in range(10)]
-lst = list(permutations(s))
+perms = ["".join(j for j in perm) for perm in permutations(s)]
 primes = [2,3,5,7,11,13,17]
 
 def check(n):
     if n[0] == '0':
         return False
 
-    for i in range (1,8):
-        if int( n [i : i+3] ) % primes[i-1]:
+    for i in range (7):
+        if int( n [i+1 : i+4] ) % primes[i]:
             return False
     return True
 
-total = 0
-for i in lst:
-    b = "".join(j for j in i)
-    if check(b):
-        print(b)
-        total += int(b)
-
+total = sum(int(perm) for perm in perms if check(perm))
 print(total)

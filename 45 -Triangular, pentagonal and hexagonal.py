@@ -1,3 +1,8 @@
+# - Problem 45
+# - Triangular, Pentagonal, and Hexagonal
+# 
+# Find the next triangle number that is also pentagonal and hexagonal.
+
 from math import sqrt
 def isPentagonal(x):
 	return (sqrt(1 + 24 * x) % 6) == 5
@@ -14,3 +19,4 @@ for i in range (286, n):
 	t = T(i)
 	if isPentagonal (t) and isHexagonal (t):
 		print(t)
+		break

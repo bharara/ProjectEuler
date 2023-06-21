@@ -1,30 +1,28 @@
-# Checks if pandigital upto 9
-def isPan (st):
-	return sorted(list(st)) == list(s)
-
-
-def isAns (i):
-	ava = [1] * n
-	for j in range(1,6):
-		k = i*j
-		for v in list(str(k)):
-			if not ava[int(v) - 1]:
-				return False
-			else:
-				ava[int(v) - 1] = 0
-
-		if ava == [0] * n:
-			return True
+# - Problem 38
+# - Pandigital Multiples
+# 
+# What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer
 
 n = 9
 s = "".join([str(x+1) for x in range(n)])
 
+def isPandigital(n):
+	return ''.join(sorted(n)) == s
 
-mn = 9
-mx = 98765//2
 
-for i in range(mn, mx, 2):
-	if isAns (i):
-		val = i
+def checkProduct(n):
+	value = str(n)
+	i = 2
+	while len(value) < 9:
+		value += str(n*i)
+		i += 1
+	return isPandigital(value)
 
-print(val, val*2, sep="")
+mx = 98765//2 ## Largest 5 digit number possible divied by 2, 
+
+value = 0
+for i in range(mx, 0, -1):
+	if checkProduct(i):
+		value = i
+		break
+print (value, value*2)

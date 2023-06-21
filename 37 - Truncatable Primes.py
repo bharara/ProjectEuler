@@ -1,3 +1,9 @@
+# - Problem 37
+# - Truncatable Primes
+# 
+# Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage
+# Find the sum of the only eleven primes that are both truncatable from left to right and right to left.
+
 n = 1000000
 
 ## Creating array where prime is 1
@@ -12,7 +18,7 @@ for i in range(3, int(n**0.5)+1, 2):
             isPrime [j] = 0
 
 
-def isAllPrime (i):
+def isTruncatablePrime (i):
     j = 10
     while j <= 100000:
         if not isPrime[i%j]:
@@ -26,11 +32,5 @@ def isAllPrime (i):
     return True
 
 
-total = 0
-for i in range(11,n):
-    if isPrime[i]:
-        if isAllPrime(i):
-            total += i
-    n += 2
-
+total = sum(i for i in range(11,n,2) if isPrime[i] and isTruncatablePrime(i))
 print(total)

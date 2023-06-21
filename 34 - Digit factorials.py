@@ -1,21 +1,20 @@
+# - Problem 34
+# - Digit Cancelling Fractions
+# 
+# Find the sum of all numbers which are equal to the sum of the factorial of their digits.
+
+cache = {
+    0: 1
+}
+
 def factorial (n):
-    if n == 0:
-        return 1
-    return n * factorial(n - 1)
+    if n not in cache:
+        cache[n] = n * factorial(n - 1)
+    return cache[n]
 
 def factorial_of_digits (n):
-
-    total = 0
-    for i in range(len(str(n))):
-        total += factorial (n % 10)
-        n //= 10
-    return total
-
+    return sum(factorial (int(i)) for i in list(str(n)))
 
 n = 100000
-
-total = 0
-for i in range(n):
-    if factorial_of_digits (i) == i:
-        total += i
+total = sum(i for i in range(3, n) if factorial_of_digits (i) == i)
 print(total)
